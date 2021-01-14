@@ -3,6 +3,7 @@ package models
 import (
 	"fmt"
 	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"go-gin-example/pkg/setting"
 	"log"
 )
@@ -11,7 +12,7 @@ var db *gorm.DB
 
 func init() {
 	var (
-		err error
+		err                                               error
 		dbType, dbName, user, password, host, tablePerfix string
 	)
 
@@ -38,8 +39,8 @@ func init() {
 	}
 
 	// 为表明添加前缀
-	gorm.DefaultTableNameHandler = func (db *gorm.DB, defaultTableName string) string  {
-		return tablePerfix + defaultTableName;
+	gorm.DefaultTableNameHandler = func(db *gorm.DB, defaultTableName string) string {
+		return tablePerfix + defaultTableName
 	}
 
 	// 禁用复数形式

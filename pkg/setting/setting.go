@@ -8,14 +8,14 @@ import (
 )
 
 var (
-	Cfg *ini.File
+	Cfg     *ini.File
 	RunMode string
 
-	HTTPPort int
-	ReadTimeout time.Duration
+	HTTPPort     int
+	ReadTimeout  time.Duration
 	WriteTimeout time.Duration
 
-	PageSize int
+	PageSize  int
 	JwtSecret string
 )
 
@@ -27,8 +27,8 @@ func init() {
 	}
 
 	LoadBase()
-	LoadBase()
 	LoadServer()
+	LoadApp()
 }
 
 func LoadBase() {

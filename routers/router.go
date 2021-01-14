@@ -7,14 +7,13 @@ import (
 )
 
 func InitRouter() *gin.Engine {
-	r := gin.New()
+	r := gin.New() // git.Default() 也使用git.New()创建engine实例i，但是会默认使用Logger和Recovery中间件，git.New() 则一切自定义
 
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
 
 	gin.SetMode(setting.RunMode)
-	
-	
+
 	apiv1 := r.Group("/api/v1")
 	{
 		apiv1.GET("/tags", v1.GetTags)
@@ -25,7 +24,7 @@ func InitRouter() *gin.Engine {
 
 	r.GET("/test", func(c *gin.Context) {
 		c.JSON(200, gin.H{
-			"test":"ok",
+			"test": "ok",
 		})
 	})
 
